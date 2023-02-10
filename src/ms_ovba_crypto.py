@@ -76,7 +76,7 @@ class MsOvbaCrypto():
         """
         Decrypt bytes of data
         """
-        # data = bytearray(data)
+        data = bytearray(data)
         seed = data.pop(0)
         version_enc = data.pop(0)
         version = version_enc ^ seed
