@@ -1,5 +1,5 @@
 import hashlib
-
+import os
 
 class MsOvbaCrypto():
 
@@ -7,18 +7,17 @@ class MsOvbaCrypto():
         bytes_to_hash = password + key
         return sha1(bytes_to_hash)
 
-
     def validate_password(password, key, hash):
         return hash_password(password, key) == hash
 
-
-    def encrypt(seed, clsid, data, length):
+    def encrypt(self, clsid, data, length):
         """
         Seed 1 byte
         clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
         data variable
         length 4 bytes (calculate from data?)
         """
+        seed = MsOvbaCrypto._make_seed()
 
         version = 2
         version_enc = version ^ seed
@@ -102,3 +101,7 @@ class MsOvbaCrypto():
         Restore null values in the data using grbit.
         """
         return data
+
+    @staticmethod
+    def _make_seed():
+        return os.urandom(1)
