@@ -15,7 +15,7 @@ class MsOvbaCrypto():
     def encrypt(seed, clsid, data, length):
         """
         Seed 1 byte
-        clsid ?
+        clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
         data variable
         length 4 bytes (calculate from data?)
         """
@@ -24,9 +24,10 @@ class MsOvbaCrypto():
         version_enc = version ^ seed
 
         proj_key = 0
-        # add each character byte from clsid to proj_key
-        # if clsid = 1234-56, do we add chr('1') + chr('2') + ... or
-        # 0x12 + 0x34 + 0x56. Do we include the dashes?
+        # sum character bytes in clsid
+        for i in range(38)
+            proj_key += ord(clsid[i])
+        proj_key = proj_key & 255
         proj_key_enc = proj_key ^ seed
 
         unencrypted_byte_1 = proj_key
@@ -62,6 +63,14 @@ class MsOvbaCrypto():
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = data_byte
+
+        output = struct.pack(
+            "<CCC",
+            seed,
+            version_enc,
+            proj_key_enc
+        ) + ignored_enc + data_length_enc + data_enc
+        return output
 
     def decrypt(data):
         """
