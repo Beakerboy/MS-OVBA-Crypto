@@ -24,7 +24,7 @@ class MsOvbaCrypto():
 
         proj_key = 0
         # sum character bytes in clsid
-        for i in range(38)
+        for i in range(38):
             proj_key += ord(clsid[i])
         proj_key = proj_key & 255
         proj_key_enc = proj_key ^ seed
