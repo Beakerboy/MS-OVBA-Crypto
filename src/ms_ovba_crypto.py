@@ -98,9 +98,28 @@ class MsOvbaCrypto():
             unencrypted_byte_1 = byte
 
         byte_index = 0
+        length = 0
         for i in range(4):
             byte_enc = data.pop(0)
-            
+            byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
+            temp_value = 256 ** byte_index
+            temp_value *= byte
+            length += temp_value
+            encrypted_byte_2 = encrypted_byte_1
+            encrypted_byte_1 = byte_enc
+            unencrypted_byte_1 = byte
+            byte_index += 1
+
+        data = b''
+        for i in range(length):
+            byte_enc = data.pop(0)
+            byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
+            data += byte
+            encrypted_byte_2 = encrypted_byte_1
+            encrypted_byte_1 = byte_enc
+            unencrypted_byte_1 = byte
+
+        return data
 
     def encode_nulls(self, data):
         """
