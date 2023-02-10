@@ -60,9 +60,23 @@ def encrypt(seed, clsid, data, length):
         encrypted_byte_1 = byte_enc
         unencrypted_byte_1 = data_byte
 
-def decrypt():
-    pass
+def decrypt(data):
+    """
+    Decrypt bytes of data
+    """
+    seed = data[0]
+    version_enc
+    version = version_enc ^ seed
+    if version != 2:
+        raise Exception("Improper version value.")
+    proj_key_enc = data[2]
+    proj_key = proj_key_enc ^ seed
 
+    unencrypted_byte_1 = proj_key
+    encrypted_byte_1 = proj_key_enc
+    encrypted_byte_2 = version_enc
+
+    ignored_length = (seed & 6) / 2
 
 def encode_nulls(data):
     """
