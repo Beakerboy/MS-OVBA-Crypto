@@ -72,17 +72,17 @@ class MsOvbaCrypto():
         ) + ignored_enc + data_length_enc + data_enc
         return output
 
-    def decrypt(self, data):
+    def decrypt(self, data_enc):
         """
         Decrypt bytes of data
         """
-        data = bytearray(data)
-        seed = data.pop(0)
-        version_enc = data.pop(0)
+        data_enc = bytearray(data_enc)
+        seed = data_enc.pop(0)
+        version_enc = data_enc.pop(0)
         version = version_enc ^ seed
         if version != 2:
             raise Exception("Improper version value.")
-        proj_key_enc = data.pop(0)
+        proj_key_enc = data_enc.pop(0)
         proj_key = proj_key_enc ^ seed
 
         unencrypted_byte_1 = proj_key
@@ -91,7 +91,7 @@ class MsOvbaCrypto():
 
         ignored_length = (seed & 6) // 2
         for i in range(ignored_length):
-            byte_enc = data.pop(0)
+            byte_enc = data_enc.pop(0)
             byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
@@ -100,7 +100,7 @@ class MsOvbaCrypto():
         byte_index = 0
         length = 0
         for i in range(4):
-            byte_enc = data.pop(0)
+            byte_enc = data_enc.pop(0)
             byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
             temp_value = 256 ** byte_index
             temp_value *= byte
@@ -112,7 +112,7 @@ class MsOvbaCrypto():
 
         data = b''
         for i in range(length):
-            byte_enc = data.pop(0)
+            byte_enc = data_enc.pop(0)
             byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
             data += byte
             encrypted_byte_2 = encrypted_byte_1
