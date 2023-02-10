@@ -88,7 +88,7 @@ class MsOvbaCrypto():
         encrypted_byte_1 = proj_key_enc
         encrypted_byte_2 = version_enc
 
-        ignored_length = (seed & 6) / 2
+        ignored_length = (seed & 6) // 2
         for i in range(ignored_length):
             byte_enc = data[3 + i]
             byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
