@@ -97,9 +97,9 @@ class MsOvbaCrypto():
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = byte
 
-            byte_index = 0
-            for i in range(4):
-                byte_enc = data.pop(0)
+        byte_index = 0
+        for i in range(4):
+            byte_enc = data.pop(0)
             
 
     def encode_nulls(self, data):
