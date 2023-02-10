@@ -101,12 +101,14 @@ class MsOvbaCrypto():
         Replace null bytes in data with 0x01.
         The grbit variable indicates which bytes were replaced.
         """
-        return grbit, data_no_nulls
+        # return grbit, data_no_nulls
+        pass
 
     def decode_nulls(self, grbit, data_no_nulls):
         """
         Restore null values in the data using grbit.
         """
+        data = b''
         return data
 
     @staticmethod
