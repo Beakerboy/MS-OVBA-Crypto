@@ -5,7 +5,7 @@ class MsOvbaCrypto():
 
     def hash_password(password, key):
         bytes_to_hash = password + key
-        return sha1(bytes_to_hash)
+        return hashlib.sha1(bytes_to_hash)
 
     def validate_password(password, key, hash):
         return hash_password(password, key) == hash
