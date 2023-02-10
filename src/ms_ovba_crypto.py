@@ -1,5 +1,6 @@
 import hashlib
 import os
+import struct
 
 def hash_password(password, key):
     bytes_to_hash = password + key
