@@ -109,7 +109,7 @@ class MsOvbaCrypto():
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = byte
             byte_index += 1
-
+        assert length == 1
         data = b''
         for i in range(length):
             byte_enc = data_enc.pop(0)
