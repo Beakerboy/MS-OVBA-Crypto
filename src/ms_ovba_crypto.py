@@ -18,6 +18,7 @@ class MsOvbaCrypto():
         clsid ?
         data variable
         length 4 bytes (calculate from data?)
+        """
 
         version = 2
         version_enc = version ^ seed
