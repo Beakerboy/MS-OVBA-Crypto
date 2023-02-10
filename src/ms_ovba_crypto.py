@@ -1,14 +1,14 @@
 import hashlib
 import os
 
+def hash_password(password, key):
+    bytes_to_hash = password + key
+    return hashlib.sha1(bytes_to_hash)
+
+def validate_password(password, key, hash):
+    return hash_password(password, key) == hash
+
 class MsOvbaCrypto():
-
-    def hash_password(password, key):
-        bytes_to_hash = password + key
-        return hashlib.sha1(bytes_to_hash)
-
-    def validate_password(password, key, hash):
-        return hash_password(password, key) == hash
 
     def encrypt(self, clsid, data, length):
         """
@@ -71,7 +71,7 @@ class MsOvbaCrypto():
         ) + ignored_enc + data_length_enc + data_enc
         return output
 
-    def decrypt(data):
+    def decrypt(self, data):
         """
         Decrypt bytes of data
         """
@@ -95,14 +95,14 @@ class MsOvbaCrypto():
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = byte
 
-    def encode_nulls(data):
+    def encode_nulls(self, data):
         """
         Replace null bytes in data with 0x01.
         The grbit variable indicates which bytes were replaced.
         """
         return grbit, data_no_nulls
 
-    def decode_nulls(grbit, data_no_nulls):
+    def decode_nulls(self, grbit, data_no_nulls):
         """
         Restore null values in the data using grbit.
         """
