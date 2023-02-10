@@ -76,7 +76,7 @@ class MsOvbaCrypto():
         Decrypt bytes of data
         """
         seed = data[0]
-        version_enc
+        version_enc = data[1]
         version = version_enc ^ seed
         if version != 2:
             raise Exception("Improper version value.")
@@ -88,6 +88,12 @@ class MsOvbaCrypto():
         encrypted_byte_2 = version_enc
 
         ignored_length = (seed & 6) / 2
+        for i in range(ignored_length):
+            byte_enc = data[3 + i]
+            byte = byte_enc ^ (encrypted_byte_1 + encrypted_byte_2)
+            encrypted_byte_2 = encrypted_byte_1
+            encrypted_byte_1 = byte_enc
+            unencrypted_byte_1 = byte
 
     def encode_nulls(data):
         """
