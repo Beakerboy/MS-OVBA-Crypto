@@ -1,5 +1,5 @@
 import hashlib
-import os
+import random
 import struct
 
 def hash_password(password, key):
@@ -139,4 +139,4 @@ class MsOvbaCrypto():
 
     @staticmethod
     def _make_seed():
-        return os.urandom(1)
+        return random.randint(0, 255)
