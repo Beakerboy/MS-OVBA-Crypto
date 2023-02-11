@@ -59,7 +59,7 @@ class MsOvbaCrypto():
         data_enc = b''
         for i in range(len(data)):
             data_byte = data[i]
-            byte_enc = data_byte ^ (unencrypted_byte_1 + encrypted_byte_2)
+            byte_enc = data_byte ^ ((unencrypted_byte_1 + encrypted_byte_2) & 255)
             data_enc += byte_enc.to_bytes(1, "little")
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
