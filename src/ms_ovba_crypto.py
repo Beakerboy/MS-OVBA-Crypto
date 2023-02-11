@@ -39,7 +39,7 @@ class MsOvbaCrypto():
         for i in range(ignored_length):
             # set temp to anything(?)
             temp_value = 0
-            byte_enc = temp_value ^ ((encrypted_byte_1 + encrypted_byte_2) & 255)
+            byte_enc = temp_value ^ ((unencrypted_byte_1 + encrypted_byte_2) & 255)
             ignored_enc += byte_enc
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
@@ -49,7 +49,7 @@ class MsOvbaCrypto():
         for i in range(4):
             # for each byte in length in little-Endian order
             byte = ((255 << (8 * (4 - i))) & length) >> (3 - i)
-            byte_enc = byte ^ (encrypted_byte_1 + encrypted_byte_2)
+            byte_enc = byte ^ (unencrypted_byte_1 + encrypted_byte_2)
             data_length_enc += byte_enc
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
@@ -58,7 +58,7 @@ class MsOvbaCrypto():
         data_enc = b''
         for i in range(len(data)):
             data_byte = data[i]
-            byte_enc = data_byte ^ (encrypted_byte_1 + encrypted_byte_2)
+            byte_enc = data_byte ^ (unencrypted_byte_1 + encrypted_byte_2)
             data_enc += byte_enc
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
