@@ -1,7 +1,7 @@
 from ms_ovba_crypto import MsOvbaCrypto
 
 
-test_encryption():
+def test_encryption():
 
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
 
