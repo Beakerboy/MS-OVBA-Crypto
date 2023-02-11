@@ -9,7 +9,7 @@ def test_encryption():
         _rand_list = [0x41, 0xBC, 0x7B, 0x7B, 0x37, 0x7B, 0x7B, 0x7B]
         @staticmethod
         def _make_seed():
-            return self._rand_list(0)
+            return OverrideRand._rand_list(0)
 
     ms_ovba_crypto = OverrideRand()
     assert ms_ovba_crypto.encrypt(clsid, b'\xFF') == b'\x41\x43\x5A\x5A\x5E\x5A\x5E\x5A\x5E\x5A\x5E'
