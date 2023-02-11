@@ -6,11 +6,12 @@ def test_encryption(rand, data, expected):
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
 
     class OverrideRand(MsOvbaCrypto):
-        def set_rand(cls, rand):
+        _rand_list = []
+        def set_rand(self, rand):
             self._rand_list = rand
         @classmethod
         def _make_seed(cls):
-            return self._rand_list.pop(0)
+            return cls._rand_list.pop(0)
 
     ms_ovba_crypto = OverrideRand()
     ms_ovba_crypto.set_rand(rand)
