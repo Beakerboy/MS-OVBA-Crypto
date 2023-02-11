@@ -110,7 +110,7 @@ class MsOvbaCrypto():
             unencrypted_byte_1 = byte
             byte_index += 1
         if length != 1:
-            raise Exception("length is " + length)
+            raise Exception("length is " + str(length))
         data = b''
         for i in range(length):
             byte_enc = data_enc.pop(0)
