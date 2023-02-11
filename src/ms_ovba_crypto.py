@@ -71,7 +71,7 @@ class MsOvbaCrypto():
             seed,
             version_enc,
             proj_key_enc
-        ) + ignored_enc + b'\x00' + data_length_enc + b'\x00' + data_enc
+        ) + ignored_enc + data_length_enc + data_enc
         return output
 
     def decrypt(self, data_enc):
