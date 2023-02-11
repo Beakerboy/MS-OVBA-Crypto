@@ -39,7 +39,7 @@ class MsOvbaCrypto():
         for i in range(ignored_length):
             # set temp to anything(?)
             temp_value = 0
-            byte_enc = temp_value ^ (encrypted_byte_1 + encrypted_byte_2)
+            byte_enc = temp_value ^ ((encrypted_byte_1 + encrypted_byte_2) & 256)
             ignored_enc += byte_enc
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
