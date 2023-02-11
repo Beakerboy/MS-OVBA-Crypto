@@ -90,6 +90,8 @@ class MsOvbaCrypto():
         encrypted_byte_2 = version_enc
 
         ignored_length = (seed & 6) // 2
+        if ignored_length != 2:
+            raise Exception("ignored length is " + str(ignored_length))
         for i in range(ignored_length):
             byte_enc = data_enc.pop(0)
             byte = byte_enc ^ ((encrypted_byte_1 + encrypted_byte_2) & 255)
