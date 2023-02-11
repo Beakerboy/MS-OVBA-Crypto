@@ -47,7 +47,7 @@ class MsOvbaCrypto():
             unencrypted_byte_1 = temp_value
 
         data_length_enc = b''
-        length_bytes = length.to_bytes(4, "little")
+        length_bytes = length.to_bytes(4, "big")
         for i in range(4):
             byte = length_bytes[i]
             # for each byte in length in little-Endian order.
