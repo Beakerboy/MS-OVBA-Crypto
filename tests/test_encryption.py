@@ -5,7 +5,7 @@ def test_encryption():
 
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
 
-    class OverrideRand(MsOvbaCrypto)
+    class OverrideRand(MsOvbaCrypto):
         _rand_list = [0x41, 0xBC, 0x7B, 0x7B, 0x37, 0x7B, 0x7B, 0x7B]
         @staticmethod
         def _make_seed():
