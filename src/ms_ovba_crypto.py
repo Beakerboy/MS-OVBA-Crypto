@@ -39,7 +39,7 @@ class MsOvbaCrypto():
         ignored_enc = b''
         for i in range(ignored_length):
             # set temp to anything(?)
-            temp_value = 0
+            temp_value = self._make_seed()
             byte_enc = temp_value ^ ((unencrypted_byte_1 + encrypted_byte_2) & 255)
             ignored_enc += byte_enc.to_bytes(1, "little")
             encrypted_byte_2 = encrypted_byte_1
