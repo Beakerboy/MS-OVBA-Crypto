@@ -66,7 +66,7 @@ class MsOvbaCrypto():
             unencrypted_byte_1 = data_byte
 
         output = struct.pack(
-            "<CCC",
+            "<BBB",
             seed,
             version_enc,
             proj_key_enc
