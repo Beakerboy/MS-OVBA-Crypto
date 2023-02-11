@@ -11,13 +11,14 @@ def validate_password(password, key, hash):
 
 class MsOvbaCrypto():
 
-    def encrypt(self, clsid, data, length):
+    def encrypt(self, clsid, data):
         """
         Seed 1 byte
         clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
         data variable
         length 4 bytes (calculate from data?)
         """
+        length = len(data)
         seed = MsOvbaCrypto._make_seed()
 
         version = 2
