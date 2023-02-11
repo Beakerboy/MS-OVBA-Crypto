@@ -19,7 +19,7 @@ class MsOvbaCrypto():
         length 4 bytes (calculate from data?)
         """
         length = len(data)
-        seed = MsOvbaCrypto._make_seed()
+        seed = self._make_seed()
 
         version = 2
         version_enc = version ^ seed
@@ -137,6 +137,6 @@ class MsOvbaCrypto():
         data = b''
         return data
 
-    @staticmethod
-    def _make_seed():
+    @classmethod
+    def _make_seed(cls):
         return random.randint(0, 255)
