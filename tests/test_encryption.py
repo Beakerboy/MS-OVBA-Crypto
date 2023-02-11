@@ -13,6 +13,6 @@ def test_encryption():
 
     ms_ovba_crypto = OverrideRand()
     assert ms_ovba_crypto.encrypt(clsid, b'\xFF') == b'\x41\x43\x5A\x5A\x5E\x5A\x5E\x5A\x5E\x5A\x5E'
-    project.setProtectionState("41435A5A5E5A5E5A5E5A5E")
+    # project.setProtectionState("41435A5A5E5A5E5A5E5A5E")
     # project.setPassword("BCBEA7A2591C5A1C5A1C")
     # project.setVisibilityState("37352C2BDCDD56DE56DEA9")
