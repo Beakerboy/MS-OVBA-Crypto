@@ -90,8 +90,6 @@ class MsOvbaCrypto():
         encrypted_byte_2 = version_enc
 
         ignored_length = (seed & 6) // 2
-        if ignored_length != 2:
-            raise Exception("ignored length is " + str(ignored_length))
         ignored = b''
         for i in range(ignored_length):
             byte_enc = data_enc.pop(0)
@@ -100,8 +98,7 @@ class MsOvbaCrypto():
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = byte
-        if ignored != b'\x07\x07':
-            raise Exception("ignored is " + str(ignored))
+
         byte_index = 0
         length = 0
         for i in range(4):
@@ -114,8 +111,6 @@ class MsOvbaCrypto():
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = byte
             byte_index += 1
-        if length != 1:
-            raise Exception("length is " + str(length))
         data = b''
         for i in range(length):
             byte_enc = data_enc.pop(0)
@@ -124,7 +119,6 @@ class MsOvbaCrypto():
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
             unencrypted_byte_1 = byte
-
         return data
 
     def encode_nulls(self, data):
