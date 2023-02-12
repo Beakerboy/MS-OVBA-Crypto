@@ -20,7 +20,7 @@ class NotSoRandom():
         cls._rand = seeds
 
     @classmethod
-    randint(cls):
+    def randint(cls):
         return self._rand.pop(0)
 
 
