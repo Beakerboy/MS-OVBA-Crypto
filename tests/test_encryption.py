@@ -1,6 +1,7 @@
 import pytest
 import ms_ovba_crypto
 import unittest.mock
+from mock import mock
 
 
 encryption_data = [
