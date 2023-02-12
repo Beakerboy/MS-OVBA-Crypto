@@ -13,3 +13,9 @@ decryption_data = [
 @pytest.mark.parametrize("data, expected", decryption_data)
 def test_project_visibility(data, expected):
     assert ms_ovba_crypto.decrypt(data) == expected
+
+
+def test_version_exception():
+    data = b'\x15\x16\xCA\xF1\xD6\xF9\xD7\xF9\xD7\x06'
+    with pytest.raises(Exception):
+        ms_ovba_crypto.decrypt(data)
