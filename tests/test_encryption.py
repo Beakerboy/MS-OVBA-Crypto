@@ -22,7 +22,7 @@ class NotSoRandom():
 
     @classmethod
     def randint(cls):
-        return self._rand.pop(0)
+        return cls._rand.pop(0)
 
 
 @mock.patch('random.randint', NotSoRandom.randint())
