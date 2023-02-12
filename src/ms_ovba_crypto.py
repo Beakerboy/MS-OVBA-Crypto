@@ -12,7 +12,7 @@ def validate_password(password, key, hash):
     return hash_password(password, key) == hash
 
 
-def encrypt(self, clsid, data):
+def encrypt(clsid, data):
     """
     Seed 1 byte
     clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
@@ -77,7 +77,7 @@ def encrypt(self, clsid, data):
     ) + ignored_enc + data_length_enc + data_enc
     return output
 
-def decrypt(self, data_enc):
+def decrypt(data_enc):
     """
     Decrypt bytes of data
     """
