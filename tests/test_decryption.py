@@ -1,8 +1,8 @@
 import pytest
-from ms_ovba_crypto import MsOvbaCrypto
+import ms_ovba_crypto
 
 
-encryption_data = [
+decryption_data = [
     (b'\x15\x17\xCA\xF1\xD6\xF9\xD7\xF9\xD7\x06', b'\xFF'),
     # ([0x41], b'0xFF', b'\x41\x43\x5A\x5A\x5E\x5A\x5E\x5A\x5E\x5A\x5E'),
     (b'\xBC\xBE\xA7\xA2\x59\x1C\x5A\x1C\x5A\x1C', b'\x00'),
@@ -10,7 +10,12 @@ encryption_data = [
 ]
 
 
-@pytest.mark.parametrize("data, expected", encryption_data)
+@pytest.mark.parametrize("data, expected", decryption_data)
 def test_project_visibility(data, expected):
-    ms_ovba_crypto = MsOvbaCrypto()
     assert ms_ovba_crypto.decrypt(data) == expected
+
+
+def test_version_exception():
+    data = b'\x15\x16\xCA\xF1\xD6\xF9\xD7\xF9\xD7\x06'
+    with pytest.raises(Exception):
+        ms_ovba_crypto.decrypt(data)

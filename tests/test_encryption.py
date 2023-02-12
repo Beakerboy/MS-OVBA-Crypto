@@ -1,5 +1,6 @@
 import pytest
-from ms_ovba_crypto import MsOvbaCrypto
+import ms_ovba_crypto
+import unittest.mock
 
 
 encryption_data = [
@@ -13,21 +14,21 @@ encryption_data = [
 ]
 
 
+class NotSoRandom():
+    _rand = []
+
+    @classmethod
+    def set_seed(cls, seeds):
+        cls._rand = seeds
+
+    @classmethod
+    def randint(cls, param1, param2):
+        return cls._rand.pop(0)
+
+
+@unittest.mock.patch('random.randint', NotSoRandom.randint)
 @pytest.mark.parametrize("rand, data, expected", encryption_data)
 def test_encryption(rand, data, expected):
-
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
-
-    class OverrideRand(MsOvbaCrypto):
-        def set_rand(self, rand):
-            self._rand_list = rand
-
-        def _make_seed(self):
-            return self._rand_list.pop(0)
-
-    ms_ovba_crypto = OverrideRand()
-    ms_ovba_crypto.set_rand(rand)
+    NotSoRandom.set_seed(rand)
     assert ms_ovba_crypto.encrypt(clsid, data) == expected
-    # project.setProtectionState("41435A5A5E5A5E5A5E5A5E")
-    # project.setPassword("BCBEA7A2591C5A1C5A1C")
-    # project.setVisibilityState("37352C2BDCDD56DE56DEA9")
