@@ -16,6 +16,7 @@ encryption_data = [
 
 class NotSoRandom():
     _rand = []
+
     @classmethod
     def set_seed(cls, seeds):
         cls._rand = seeds
