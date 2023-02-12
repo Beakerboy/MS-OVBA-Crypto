@@ -1,5 +1,5 @@
 import pytest
-from ms_ovba_crypto import MsOvbaCrypto
+import ms_ovba_crypto
 
 
 encryption_data = [
@@ -12,5 +12,4 @@ encryption_data = [
 
 @pytest.mark.parametrize("data, expected", encryption_data)
 def test_project_visibility(data, expected):
-    ms_ovba_crypto = MsOvbaCrypto()
     assert ms_ovba_crypto.decrypt(data) == expected
