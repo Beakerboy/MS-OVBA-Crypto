@@ -25,7 +25,7 @@ class NotSoRandom():
         return cls._rand.pop(0)
 
 
-@unittest.mock.patch('random.randint', NotSoRandom.randint())
+@unittest.mock.patch('random.randint', NotSoRandom.randint)
 @pytest.mark.parametrize("rand, data, expected", encryption_data)
 def test_encryption(rand, data, expected):
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
