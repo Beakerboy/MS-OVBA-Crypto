@@ -2,12 +2,15 @@ import hashlib
 import random
 import struct
 
+
 def hash_password(password, key):
     bytes_to_hash = password + key
     return hashlib.sha1(bytes_to_hash)
 
+
 def validate_password(password, key, hash):
     return hash_password(password, key) == hash
+
 
 class MsOvbaCrypto():
 
