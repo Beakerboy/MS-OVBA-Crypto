@@ -43,7 +43,8 @@ class MsOvbaCrypto():
         for i in range(ignored_length):
             # set temp to anything(?)
             temp_value = self._make_seed()
-            byte_enc = temp_value ^ ((unencrypted_byte_1 + encrypted_byte_2) & 255)
+            sum = (unencrypted_byte_1 + encrypted_byte_2) & 255
+            byte_enc = temp_value ^ sum
             ignored_enc += byte_enc.to_bytes(1, "little")
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
@@ -63,7 +64,8 @@ class MsOvbaCrypto():
         data_enc = b''
         for i in range(len(data)):
             data_byte = data[i]
-            byte_enc = data_byte ^ ((unencrypted_byte_1 + encrypted_byte_2) & 255)
+            sum = (unencrypted_byte_1 + encrypted_byte_2) & 255
+            byte_enc = data_byte ^ sum
             data_enc += byte_enc.to_bytes(1, "little")
             encrypted_byte_2 = encrypted_byte_1
             encrypted_byte_1 = byte_enc
