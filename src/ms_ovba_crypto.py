@@ -77,6 +77,7 @@ def encrypt(clsid, data):
     ) + ignored_enc + data_length_enc + data_enc
     return output
 
+
 def decrypt(data_enc):
     """
     Decrypt bytes of data
@@ -126,6 +127,7 @@ def decrypt(data_enc):
         unencrypted_byte_1 = byte
     return data
 
+
 def encode_nulls(self, data):
     """
     Replace null bytes in data with 0x01.
@@ -133,6 +135,7 @@ def encode_nulls(self, data):
     """
     # return grbit, data_no_nulls
     pass
+
 
 def decode_nulls(self, grbit, data_no_nulls):
     """
