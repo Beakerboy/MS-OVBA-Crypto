@@ -21,7 +21,7 @@ class NotSoRandom():
         cls._rand = seeds
 
     @classmethod
-    def randint(cls):
+    def randint(cls, param1, param2):
         return cls._rand.pop(0)
 
 
