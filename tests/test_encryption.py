@@ -22,11 +22,11 @@ class NotSoRandom():
     _rand = []
 
     @classmethod
-    def set_seed(cls, seeds):
+    def set_seed(cls, seeds: list) -> None:
         cls._rand = seeds
 
     @classmethod
-    def randint(cls, param1, param2):
+    def randint(cls, param1: int, param2: int) -> int:
         return cls._rand.pop(0)
 
 
