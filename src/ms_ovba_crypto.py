@@ -12,12 +12,10 @@ def validate_password(password, key, hash):
     return hash_password(password, key) == hash
 
 
-def encrypt(clsid, data):
+def encrypt(clsid: string, data: bytes) -> bytes:
     """
-    Seed 1 byte
     clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
     data variable
-    length 4 bytes (calculate from data?)
     """
     length = len(data)
     seed = random.randint(0, 255)
@@ -78,7 +76,7 @@ def encrypt(clsid, data):
     return output
 
 
-def decrypt(data_enc):
+def decrypt(data_enc: bytes) -> bytes:
     """
     Decrypt bytes of data
     """
