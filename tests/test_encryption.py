@@ -1,6 +1,7 @@
 import pytest
 import ms_ovba_crypto
 import unittest.mock
+from typing import TypeVar, Type
 
 
 encryption_data = [
@@ -17,22 +18,25 @@ encryption_data = [
     ),
 ]
 
+# Create a generic variable that can be 'NotSoRandom', or any subclass.
+T = TypeVar('T', bound='NotSoRandom')
+
 
 class NotSoRandom():
     _rand = []
 
     @classmethod
-    def set_seed(cls, seeds):
+    def set_seed(cls: Type[T], seeds: list) -> None:
         cls._rand = seeds
 
     @classmethod
-    def randint(cls, param1, param2):
+    def randint(cls: Type[T], param1: int, param2: int) -> int:
         return cls._rand.pop(0)
 
 
 @unittest.mock.patch('random.randint', NotSoRandom.randint)
 @pytest.mark.parametrize("rand, data, expected", encryption_data)
-def test_encryption(rand, data, expected):
+def test_encryption(rand: list, data: bytes, expected: bytes) -> None:
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
     NotSoRandom.set_seed(rand)
     assert ms_ovba_crypto.encrypt(clsid, data) == expected
