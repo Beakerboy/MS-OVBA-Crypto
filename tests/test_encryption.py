@@ -19,7 +19,7 @@ encryption_data = [
 ]
 
 # Create a generic variable that can be 'Parent', or any subclass.
-T = TypeVar('T', bound='Parent')
+T = TypeVar('T', bound='NotSoRandom')
 
 
 class NotSoRandom():
