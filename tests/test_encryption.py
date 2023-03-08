@@ -32,7 +32,7 @@ class NotSoRandom():
 
 @unittest.mock.patch('random.randint', NotSoRandom.randint)
 @pytest.mark.parametrize("rand, data, expected", encryption_data)
-def test_encryption(rand, data, expected):
+def test_encryption(rand: list, data: bytes, expected: bytes) -> None:
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
     NotSoRandom.set_seed(rand)
     assert ms_ovba_crypto.encrypt(clsid, data) == expected
