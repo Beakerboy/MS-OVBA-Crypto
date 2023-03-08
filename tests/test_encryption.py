@@ -26,7 +26,7 @@ class NotSoRandom():
     _rand = []
 
     @classmethod
-    def set_seed(cls, seeds: list) -> None:
+    def set_seed(cls: Type[T], seeds: list) -> None:
         cls._rand = seeds
 
     @classmethod
