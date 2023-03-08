@@ -11,7 +11,7 @@ decryption_data = [
 
 
 @pytest.mark.parametrize("data, expected", decryption_data)
-def test_project_visibility(data, expected):
+def test_project_visibility(data: bytes, expected: bytes) -> None:
     assert ms_ovba_crypto.decrypt(data) == expected
 
 
