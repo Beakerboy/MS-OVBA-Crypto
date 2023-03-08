@@ -3,15 +3,6 @@ import random
 import struct
 
 
-def hash_password(password, key):
-    bytes_to_hash = password + key
-    return hashlib.sha1(bytes_to_hash)
-
-
-def validate_password(password, key, hash):
-    return hash_password(password, key) == hash
-
-
 def encrypt(clsid: string, data: bytes) -> bytes:
     """
     clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
@@ -123,21 +114,4 @@ def decrypt(data_enc: bytes) -> bytes:
         encrypted_byte_2 = encrypted_byte_1
         encrypted_byte_1 = byte_enc
         unencrypted_byte_1 = byte
-    return data
-
-
-def encode_nulls(self, data):
-    """
-    Replace null bytes in data with 0x01.
-    The grbit variable indicates which bytes were replaced.
-    """
-    # return grbit, data_no_nulls
-    pass
-
-
-def decode_nulls(self, grbit, data_no_nulls):
-    """
-    Restore null values in the data using grbit.
-    """
-    data = b''
     return data
