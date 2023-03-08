@@ -1,6 +1,7 @@
 import pytest
 import ms_ovba_crypto
 import unittest.mock
+from typing import TypeVar, Type
 
 
 encryption_data = [
@@ -17,6 +18,9 @@ encryption_data = [
     ),
 ]
 
+# Create a generic variable that can be 'Parent', or any subclass.
+T = TypeVar('T', bound='Parent')
+
 
 class NotSoRandom():
     _rand = []
@@ -26,7 +30,7 @@ class NotSoRandom():
         cls._rand = seeds
 
     @classmethod
-    def randint(cls, param1: int, param2: int) -> int:
+    def randint(cls: Type[T], param1: int, param2: int) -> int:
         return cls._rand.pop(0)
 
 
