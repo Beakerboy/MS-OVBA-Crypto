@@ -24,7 +24,7 @@ encrypted = ms_ovba_crypto.encrypt(clsid, data)
 data = b'\x41\x43\x5A\x5A\x5E\x5A\x5E\x5A\x5E\x5A\x5E'
 
 # returns b'\x00\x00\x00\x00'
-ms_ovba_crypto.decrypt(clsid, data)
+ms_ovba_crypto.decrypt(data)
 
 ```
 
