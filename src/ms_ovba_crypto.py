@@ -2,7 +2,7 @@ import random
 import struct
 
 
-def encrypt(clsid: string, data: bytes) -> bytes:
+def encrypt(clsid: str, data: bytes) -> bytes:
     """
     clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
     data variable
