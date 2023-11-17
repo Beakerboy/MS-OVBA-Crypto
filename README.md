@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/Beakerboy/MS-OVBA-Crypto/badge.png?branch=main)](https://coveralls.io/github/Beakerboy/MS-OVBA-Crypto?branch=main) ![Build Status](https://github.com/Beakerboy/MS-OVBA-Crypto/actions/workflows/python-package.yml/badge.svg)
 # MS-OVBA-Crypto
 Cryptographic Functions for Office Visual Basic files.
 
