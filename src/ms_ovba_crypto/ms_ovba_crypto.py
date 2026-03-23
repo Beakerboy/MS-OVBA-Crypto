@@ -4,6 +4,7 @@ import struct
 
 class MsOvbaCrypto:
 
+    @staticmethod
     def encrypt(clsid: str, data: bytes) -> bytes:
         """
         clsid string "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
@@ -67,6 +68,7 @@ class MsOvbaCrypto:
         ) + ignored_enc + data_length_enc + data_enc
         return output
 
+    @staticmethod
     def decrypt(data_enc: bytes) -> bytes:
         """
         Decrypt bytes of data
