@@ -1,5 +1,5 @@
 import pytest
-import ms_ovba_crypto
+import ms_ovba_crypto.ms_ovba_crypto
 import unittest.mock
 from typing import TypeVar, Type
 
