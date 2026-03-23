@@ -1,5 +1,5 @@
 import pytest
-import ms_ovba_crypto.crypto
+import ms_ovba_crypto.crypto as crypto
 
 
 decryption_data = [
