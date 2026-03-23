@@ -34,3 +34,7 @@ pythonpath = "src"
 testpaths = [
     "tests",
 ]
+
+[tool.setuptools.package-data]
+# Include all .pyi files and the py.typed file
+"*" = ["*.pyi", "py.typed"] 
