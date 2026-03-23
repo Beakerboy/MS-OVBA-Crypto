@@ -2,7 +2,7 @@ import random
 import struct
 
 
-class MSOvbaCrypto:
+class MsOvbaCrypto:
 
     def encrypt(clsid: str, data: bytes) -> bytes:
         """
