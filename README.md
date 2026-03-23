@@ -14,18 +14,18 @@ pip install ms_ovba_crypto
 Microsoft VBA files use a custom encryption algorithm to obfuscate visibility and permission fields. The clsid is used as a seed. 
 
 ```python
-import ms_ovba_crypto
+from ms_ovba_crypto import MsOvbaCrypto
 
 data = b'\x00\x00\x00\x00',
 
 clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
 # Random numbers are used in the obfuscation, so the output is not deterministic.
-encrypted = ms_ovba_crypto.encrypt(clsid, data)
+encrypted = MsOvbaCrypto.encrypt(clsid, data)
 
 data = b'\x41\x43\x5A\x5A\x5E\x5A\x5E\x5A\x5E\x5A\x5E'
 
 # returns b'\x00\x00\x00\x00'
-ms_ovba_crypto.decrypt(data)
+MsOvbaCrypto.decrypt(data)
 
 ```
 
