@@ -1,5 +1,5 @@
 import pytest
-import ms_ovba_crypto.ms_ovba_crypto as ms_ovba_crypto
+from ms_ovba_crypto.ms_ovba_crypto import MsOvbaCrypto
 import unittest.mock
 from typing import TypeVar, Type
 
@@ -39,4 +39,4 @@ class NotSoRandom():
 def test_encryption(rand: list, data: bytes, expected: bytes) -> None:
     clsid = '{9E394C0B-697E-4AEE-9FA6-446F51FB30DC}'
     NotSoRandom.set_seed(rand)
-    assert ms_ovba_crypto.encrypt(clsid, data) == expected
+    assert MsOvbaCrypto.encrypt(clsid, data) == expected
