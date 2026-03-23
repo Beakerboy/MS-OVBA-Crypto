@@ -30,7 +30,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e .[tests]
-        stubgen src -o src
+        stubgen src/ms_ovba_crypto -o src/ms_ovba_crypto
         pip install build
     - name: Build package
       run: python -m build

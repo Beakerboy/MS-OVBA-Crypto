@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ms_ovba_crypto"
-version = "1.0.5"
+version = "1.0.6"
 authors = [
   { name="Kevin Nowaczyk", email="beakerboy99@yahoo.com" },
 ]
@@ -34,7 +34,3 @@ pythonpath = "src"
 testpaths = [
     "tests",
 ]
-
-[tool.setuptools.package-data]
-# Include all .pyi files and the py.typed file
-"*" = ["*.pyi", "py.typed"] 
