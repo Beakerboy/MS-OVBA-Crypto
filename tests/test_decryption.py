@@ -1,5 +1,5 @@
 import pytest
-import ms_ovba_crypto.ms_ovba_crypto as ms_ovba_crypto
+from ms_ovba_crypto.ms_ovba_crypto import MsOvbaCrypto
 
 
 decryption_data = [
@@ -12,10 +12,10 @@ decryption_data = [
 
 @pytest.mark.parametrize("data, expected", decryption_data)
 def test_project_visibility(data: bytes, expected: bytes) -> None:
-    assert ms_ovba_crypto.decrypt(data) == expected
+    assert MsOvbaCrypto.decrypt(data) == expected
 
 
 def test_version_exception() -> None:
     data = b'\x15\x16\xCA\xF1\xD6\xF9\xD7\xF9\xD7\x06'
     with pytest.raises(Exception):
-        ms_ovba_crypto.decrypt(data)
+        MsOvbaCrypto.decrypt(data)
